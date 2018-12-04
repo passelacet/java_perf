@@ -64,7 +64,7 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
   @Override
   public String[][] getParameterInfo() {
     String[][] lInfo = { { "SeuilLuminance", "string", "Seuil de luminance" }, { "Img", "string", "Image" },
-        { "NbFourmis", "string", "Nombre de fourmis" }, { "Fourmis", "string",
+            { "NbFourmis", "string", "Nombre de fourmis" }, { "Fourmis", "string",
             "Paramètres des fourmis (RGB_déposée)(RGB_suivie)(x,y,direction,taille)(TypeDeplacement,ProbaG,ProbaTD,ProbaD,ProbaSuivre);...;" } };
     return lInfo;
   }
@@ -160,12 +160,12 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
     // System.out.println(" chaine pStr: "+pStr);
     StringTokenizer lStrTok = new StringTokenizer(pStr, ":");
     // on lit une premiere valeur
-    lMin = Float.valueOf(lStrTok.nextToken()).floatValue();
+    lMin = Float.valueOf(lStrTok.nextToken());
     // System.out.println(" lMin: "+lMin);
     lResult = lMin;
     // on essaye d'en lire une deuxieme
     try {
-      lMax = Float.valueOf(lStrTok.nextToken()).floatValue();
+      lMax = Float.valueOf(lStrTok.nextToken());
       // System.out.println(" lMax: "+lMax);
       if (lMax > lMin) {
         // on choisit un nombre entre lMin et lMax
@@ -187,11 +187,11 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
     int lMin, lMax, lResult;
     StringTokenizer lStrTok = new StringTokenizer(pStr, ":");
     // on lit une premiere valeur
-    lMin = Integer.valueOf(lStrTok.nextToken()).intValue();
+    lMin = Integer.valueOf(lStrTok.nextToken());
     lResult = lMin;
     // on essaye d'en lire une deuxieme
     try {
-      lMax = Integer.valueOf(lStrTok.nextToken()).intValue();
+      lMax = Integer.valueOf(lStrTok.nextToken());
       if (lMax > lMin) {
         // on choisit un nombre entre lMin et lMax
         lResult = (int) (Math.random() * (lMax - lMin + 1)) + lMin;
@@ -345,11 +345,11 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
         lProbaD /= lSomme;
 
         System.out.println(
-            "(" + lTypeDeplacement + "," + lProbaG + "," + lProbaTD + "," + lProbaD + "," + lProbaSuivre + ");");
+                "(" + lTypeDeplacement + "," + lProbaG + "," + lProbaTD + "," + lProbaD + "," + lProbaSuivre + ");");
 
         // création de la fourmi
         lFourmi = new CFourmi(lCouleurDeposee, lCouleurSuivie, lProbaTD, lProbaG, lProbaD, lProbaSuivre, mPainting,
-            lTypeDeplacement, lInit_x, lInit_y, lInitDirection, lTaille, lSeuilLuminance, this);
+                lTypeDeplacement, lInit_x, lInit_y, lInitDirection, lTaille, lSeuilLuminance, this);
         mColonie.addElement(lFourmi);
         lNbFourmis++;
       }
@@ -400,16 +400,16 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
         lProbaSuivre = (float) (0.5 + 0.5 * Math.random());
 
         System.out.print(
-            "Random:(" + lTabColor[i].getRed() + "," + lTabColor[i].getGreen() + "," + lTabColor[i].getBlue() + ")");
+                "Random:(" + lTabColor[i].getRed() + "," + lTabColor[i].getGreen() + "," + lTabColor[i].getBlue() + ")");
         System.out.print("(" + lTabColor[lColor].getRed() + "," + lTabColor[lColor].getGreen() + ","
-            + lTabColor[lColor].getBlue() + ")");
+                + lTabColor[lColor].getBlue() + ")");
         System.out.print("(" + lInit_x + "," + lInit_y + "," + lInitDirection + "," + lTaille + ")");
         System.out.println(
-            "(" + lTypeDeplacement + "," + lProbaG + "," + lProbaTD + "," + lProbaD + "," + lProbaSuivre + ");");
+                "(" + lTypeDeplacement + "," + lProbaG + "," + lProbaTD + "," + lProbaD + "," + lProbaSuivre + ");");
 
         // création et ajout de la fourmi dans la colonie
         lFourmi = new CFourmi(lTabColor[i], lTabColor[lColor], lProbaTD, lProbaG, lProbaD, lProbaSuivre, mPainting,
-            lTypeDeplacement, lInit_x, lInit_y, lInitDirection, lTaille, lSeuilLuminance, this);
+                lTypeDeplacement, lInit_x, lInit_y, lInitDirection, lTaille, lSeuilLuminance, this);
         mColonie.addElement(lFourmi);
       }
     }
